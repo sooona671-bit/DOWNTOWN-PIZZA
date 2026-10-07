@@ -59,20 +59,43 @@ export default function ProfilePhoto({ photo, name, onChange, large = false, dis
     }
   };
 
-  return   <div className={`profile-photo-control ${large ? 'large' : ''} ${disabled ? 'disabled' : ''}`}>
-    <div className="profile-photo-frame">
-     <span className="profile-photo-circle">
-  <ContentImage src={photo || imageSlots.profile.fallback} alt={name ? `${name} profile photo` : 'Profile photo'} fallbackSrc={imageSlots.profile.fallback} loading="eager" />
-</span>
-      <span className="profile-photo-camera" aria-hidden="true">
-        <Camera size={large ? 19 : 16} aria-hidden="true" />
-      </span>
-      <input id={inputId} className="profile-photo-input" type="file" accept="image/*" aria-label="Choose profile photo" disabled={disabled || busy} onChange={choosePhoto} />
+  return (
+    <div className={`profile-photo-control ${large ? 'large' : ''} ${disabled ? 'disabled' : ''}`}>
+      <div className="profile-photo-frame">
+        <span className="profile-photo-circle">
+          <ContentImage
+            src={photo || imageSlots.profile.fallback}
+            alt={name ? `${name} profile photo` : 'Profile photo'}
+            fallbackSrc={imageSlots.profile.fallback}
+            loading="eager"
+          />
+        </span>
+        <span className="profile-photo-camera" aria-hidden="true">
+          <Camera size={large ? 19 : 16} aria-hidden="true" />
+        </span>
+        <input
+          id={inputId}
+          className="profile-photo-input"
+          type="file"
+          accept="image/*"
+          aria-label="Choose profile photo"
+          disabled={disabled || busy}
+          onChange={choosePhoto}
+        />
+      </div>
+      {!disabled && (
+        <div className="profile-photo-actions">
+          <label className="profile-photo-change" htmlFor={inputId}>
+            {busy ? 'Preparing photo…' : photo ? 'Change photo' : 'Add a photo'}
+          </label>
+          {photo && (
+            <button type="button" className="profile-photo-remove" onClick={() => updatePhoto('')}>
+              <Trash2 size={13} /> Remove
+            </button>
+          )}
+        </div>
+      )}
+      {error && <p className="profile-photo-error" role="alert">{error}</p>}
     </div>
-    {!disabled && <div className="profile-photo-actions">
-      <label className="profile-photo-change" htmlFor={inputId}>{busy ? 'Preparing photo…' : photo ? 'Change photo' : 'Add a photo'}</label>
-      {photo && <button type="button" className="profile-photo-remove" onClick={() => updatePhoto('')}><Trash2 size={13} /> Remove</button>}
-    </div>}
-    {error && <p className="profile-photo-error" role="alert">{error}</p>}
-  </div>;
+  );
 }
