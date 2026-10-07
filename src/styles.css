@@ -749,43 +749,36 @@ html, body, #root {
   background: rgba(255, 254, 250, 0.75) !important;
   backdrop-filter: blur(20px);
 }
-/* Modals ko solid wapas karo — glass sirf cards ke liye, full-screen popups ke liye nahi */
-.location-modal,
-.auth-modal,
-.filter-modal,
-.confirm-dialog,
-.profile-panel {
-  background: #fffefa !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: 1px solid var(--theme-border) !important;
-  box-shadow: 0 -16px 40px rgba(72, 48, 31, 0.22) !important;
+
+/* ===== PATCH 2: fix double safe-area gap, splash black bar, bottom spacing ===== */
+
+/* Bug 1: remove duplicate top padding — keep it only on app-header */
+.phone-canvas {
+  padding-top: 0 !important;
+}
+.app-header {
+  padding-top: calc(env(safe-area-inset-top) + 10px) !important;
 }
 
-.modal-backdrop {
-  position: fixed !important;
-  inset: 0 !important;
-  background: rgba(30, 20, 14, 0.55) !important;
-  backdrop-filter: blur(2px);
-  z-index: 50 !important;
+/* Bug 2: splash/opening wrapper should never show dark/black — match theme */
+.opening-flow,
+.opening-flow-exit,
+.opening-panel {
+  background: var(--theme-page) !important;
 }
-/* Modals ko solid wapas karo — glass sirf cards ke liye, full-screen popups ke liye nahi */
-.location-modal,
-.auth-modal,
-.filter-modal,
-.confirm-dialog,
-.profile-panel {
-  background: #fffefa !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: 1px solid var(--theme-border) !important;
-  box-shadow: 0 -16px 40px rgba(72, 48, 31, 0.22) !important;
+.splash-screen {
+  position: absolute !important;
+  inset: 0 !important;
+  height: auto !important;
+  background: linear-gradient(180deg, #fff8ee, #f6f1e8 58%, #efe4d7) !important;
+  padding-top: calc(24px + env(safe-area-inset-top)) !important;
+  padding-bottom: calc(28px + env(safe-area-inset-bottom)) !important;
 }
 
-.modal-backdrop {
-  position: fixed !important;
-  inset: 0 !important;
-  background: rgba(30, 20, 14, 0.55) !important;
-  backdrop-filter: blur(2px);
-  z-index: 50 !important;
+/* Bug 3: tighten bottom spacing on home so nav doesn't float with a big empty gap */
+.home-screen {
+  padding-bottom: calc(100px + env(safe-area-inset-bottom)) !important;
+}
+.bottom-nav {
+  margin-bottom: max(10px, env(safe-area-inset-bottom)) !important;
 }
