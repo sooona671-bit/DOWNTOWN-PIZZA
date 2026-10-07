@@ -749,3 +749,43 @@ html, body, #root {
   background: rgba(255, 254, 250, 0.75) !important;
   backdrop-filter: blur(20px);
 }
+/* Modals ko solid wapas karo — glass sirf cards ke liye, full-screen popups ke liye nahi */
+.location-modal,
+.auth-modal,
+.filter-modal,
+.confirm-dialog,
+.profile-panel {
+  background: #fffefa !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid var(--theme-border) !important;
+  box-shadow: 0 -16px 40px rgba(72, 48, 31, 0.22) !important;
+}
+
+.modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(30, 20, 14, 0.55) !important;
+  backdrop-filter: blur(2px);
+  z-index: 50 !important;
+}
+/* Modals ko solid wapas karo — glass sirf cards ke liye, full-screen popups ke liye nahi */
+.location-modal,
+.auth-modal,
+.filter-modal,
+.confirm-dialog,
+.profile-panel {
+  background: #fffefa !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid var(--theme-border) !important;
+  box-shadow: 0 -16px 40px rgba(72, 48, 31, 0.22) !important;
+}
+
+.modal-backdrop {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(30, 20, 14, 0.55) !important;
+  backdrop-filter: blur(2px);
+  z-index: 50 !important;
+}
