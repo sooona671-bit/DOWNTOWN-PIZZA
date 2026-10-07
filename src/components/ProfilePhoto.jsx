@@ -61,7 +61,9 @@ export default function ProfilePhoto({ photo, name, onChange, large = false, dis
 
   return   <div className={`profile-photo-control ${large ? 'large' : ''} ${disabled ? 'disabled' : ''}`}>
     <div className="profile-photo-frame">
-      <ContentImage src={photo || imageSlots.profile.fallback} alt={name ? `${name} profile photo` : 'Profile photo'} fallbackSrc={imageSlots.profile.fallback} loading="eager" />
+     <span className="profile-photo-circle">
+  <ContentImage src={photo || imageSlots.profile.fallback} alt={name ? `${name} profile photo` : 'Profile photo'} fallbackSrc={imageSlots.profile.fallback} loading="eager" />
+</span>
       <span className="profile-photo-camera" aria-hidden="true">
         <Camera size={large ? 19 : 16} aria-hidden="true" />
       </span>
