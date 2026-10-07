@@ -639,3 +639,113 @@ html{background:var(--theme-page);-webkit-text-size-adjust:100%}
   html,body{position:fixed;inset:0;width:100%;height:100%;overflow:hidden;overscroll-behavior:none;background:var(--theme-page)}
   .app-shell,.phone-canvas{min-height:-webkit-fill-available}
 }
+
+
+/* ===== FINAL FIX: theme-correct background + liquid glass restore ===== */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: var(--theme-page);
+}
+
+#root { height: 100dvh; min-height: -webkit-fill-available; }
+
+.app-shell {
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  background: var(--theme-page) !important;
+}
+
+.phone-canvas {
+  width: 100%;
+  height: 100dvh;
+  height: -webkit-fill-available;
+  border-radius: 0 !important;
+  border: none !important;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  background: var(--theme-page) !important;
+}
+
+.app-header { padding-top: calc(env(safe-area-inset-top) + 12px) !important; }
+
+.bottom-nav {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 10px) !important;
+  bottom: 0 !important;
+}
+
+.utility-screen, .home-screen {
+  padding-bottom: calc(120px + env(safe-area-inset-bottom)) !important;
+}
+
+.splash-screen {
+  height: 100dvh;
+  height: -webkit-fill-available;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ===== Liquid glass restore on top of cream/orange theme ===== */
+.promo-banner,
+.product-card,
+.restaurant-card,
+.featured-restaurant-card,
+.category,
+.offer-banner,
+.profile-header-card,
+.profile-menu-list,
+.profile-order-card,
+.profile-address-card,
+.profile-info-card,
+.profile-inline-card,
+.profile-note,
+.profile-policy-section,
+.profile-about-card,
+.profile-payment-method,
+.profile-preference-row,
+.profile-setting-group,
+.profile-faq,
+.profile-link-option,
+.profile-saved-card,
+.checkout-location,
+.payment-option,
+.order-card,
+.cart-item,
+.account-popover,
+.saved-address,
+.location-modal,
+.auth-modal,
+.filter-modal,
+.confirm-dialog,
+.detail-sheet {
+  background: rgba(255, 254, 250, 0.68) !important;
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border: 1px solid rgba(244, 81, 30, 0.14) !important;
+  box-shadow: 0 14px 34px rgba(72, 48, 31, 0.1), inset 0 1px 1px rgba(255,255,255,.5) !important;
+}
+
+.bottom-nav {
+  background: rgba(255, 254, 250, 0.72) !important;
+  backdrop-filter: blur(22px) saturate(1.3);
+  -webkit-backdrop-filter: blur(22px) saturate(1.3);
+  border: 1px solid rgba(244, 81, 30, 0.16) !important;
+}
+
+.promo-banner {
+  background: linear-gradient(120deg, rgba(244,81,30,.88), rgba(216,61,24,.82) 70%) !important;
+  backdrop-filter: blur(14px);
+}
+
+.app-header {
+  background: rgba(246, 241, 232, 0.55) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.home-search-results-overlay {
+  background: rgba(255, 254, 250, 0.75) !important;
+  backdrop-filter: blur(20px);
+}
