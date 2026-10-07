@@ -633,3 +633,9 @@ html,body,#root{background:var(--theme-page);color:var(--theme-ink)}
 /* F. Profile sections ke beech gap */
 .profile-screen{display:flex;flex-direction:column}
 .profile-screen>*{flex-shrink:0}
+/* True full-screen on phones */
+html{background:var(--theme-page);-webkit-text-size-adjust:100%}
+@media(max-width:600px),(pointer:coarse){
+  html,body{position:fixed;inset:0;width:100%;height:100%;overflow:hidden;overscroll-behavior:none;background:var(--theme-page)}
+  .app-shell,.phone-canvas{min-height:-webkit-fill-available}
+}
