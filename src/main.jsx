@@ -272,9 +272,6 @@ function AccountAvatar({ user, orders, addresses, onOpenProfile, onViewOrder, on
 }
 function Home({ query, setQuery, category, setCategory, visibleProducts, favorites, toggleFavorite, favoriteRestaurants, toggleFavoriteRestaurant, openProduct, addToCart, location, setOverlay, go, orders, user, scrollRef, onScroll }) {
   return <section className="screen home-screen" ref={scrollRef} onScroll={(event) => onScroll && onScroll(event.currentTarget.scrollTop)}>
-    <div className="home-top"><div><p className="eyebrow">Delivering to</p><button className="place-button" onClick={() => setOverlay('location')}>⌖ {location} <span>⌄</span></button></div></div>
-    <div className="greeting"><p>Namaste, <b>{user?.name?.split(' ')[0] || 'there'}</b> <span>👋</span></p><h1>Good food.<br /><em>Great Nepal.</em></h1></div>
-    <div className="search-row"><label className="search-box"><span>⌕</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search restaurants or dishes" aria-label="Search" /></label><button className="icon-button" onClick={() => setOverlay('filter')} aria-label="Open filters">☷</button></div>
     <Promo onClick={() => openProduct(products[0])} /><OfferBanner onClick={() => openProduct(products[0])} />
     <div className="section-heading"><h2>Explore categories</h2><button onClick={() => setCategory('all')}>View all</button></div>
     <div className="category-row">{categories.map(([id, label]) => <button key={id} className={`category ${category === id ? 'active' : ''}`} onClick={() => setCategory(id)}><strong><ContentImage className="category-icon" src={imageSlots.categories(id)} alt={`${label} category`} fallbackSrc={imageSlots.fallbacks.food} /></strong><span>{label}</span></button>)}</div>
